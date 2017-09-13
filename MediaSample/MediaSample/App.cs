@@ -16,6 +16,9 @@ namespace MediaSample
 			MainPage = new NavigationPage(new MediaPage());
 		}
 
+		/// <summary>
+		/// On start 
+		/// </summary>
 		protected override void OnStart()
 		{
 			// Handle when your app starts
