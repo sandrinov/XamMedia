@@ -37,11 +37,11 @@ namespace MediaSample
 				await DisplayAlert("File Location", file.Path, "OK");
 
 				image.Source = ImageSource.FromStream(() =>
-		  {
-				  var stream = file.GetStream();
-				  file.Dispose();
-				  return stream;
-			  });
+				{
+					var stream = file.GetStream();
+					file.Dispose();
+					return stream;
+				});
 			};
 
 			pickPhoto.Clicked += async (sender, args) =>
@@ -62,10 +62,10 @@ namespace MediaSample
 
 				image.Source = ImageSource.FromStream(() =>
 		  {
-				  var stream = file.GetStream();
-				  file.Dispose();
-				  return stream;
-			  });
+			  var stream = file.GetStream();
+			  file.Dispose();
+			  return stream;
+		  });
 			};
 
 			takeVideo.Clicked += async (sender, args) =>
@@ -112,18 +112,20 @@ namespace MediaSample
 		{
 			var scanPage = new ZXingScannerPage();
 
-			scanPage.OnScanResult += (result) => {
+			scanPage.OnScanResult += (result) =>
+			{
 				// Stop scanning
 				scanPage.IsScanning = false;
 
 				// Pop the page and show the result
-				Device.BeginInvokeOnMainThread(() => {
+				Device.BeginInvokeOnMainThread(() =>
+				{
 					Navigation.PopAsync();
 					DisplayAlert("Scanned Barcode", result.Text, "OK");
 				});
 			};
 			// Navigate to our scanner page
-			Navigation.PushAsync(scanPage);			
+			Navigation.PushAsync(scanPage);
 		}
 	}
 }
